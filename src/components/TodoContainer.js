@@ -3,6 +3,7 @@
 import React from 'react';
 import Header from './Header';
 import TodosList from './TodosList';
+import InputTodo from './InputTodo';
 
 class TodoContainer extends React.Component {
   constructor(props) {
@@ -49,12 +50,25 @@ class TodoContainer extends React.Component {
     }));
   }
 
+  addTodoItem = (title) => {
+    const { todos } = this.state;
+    const newTodo = {
+      id: 4,
+      title,
+      complete: false,
+    };
+    this.setState({
+      todos: [...todos, newTodo],
+    });
+  }
+
   render() {
     const { todos } = this.state;
 
     return (
       <div>
         <Header />
+        <InputTodo addTodoProps={this.addTodoItem} />
         <TodosList
           todos={todos}
           handleChangeProps={this.handleChange}

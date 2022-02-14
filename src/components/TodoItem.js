@@ -9,8 +9,6 @@ class TodoItem extends Component {
 
   render() {
     const { task, handleChangeProps, delTodoProps } = this.props;
-    console.log('OM');
-    console.log(delTodoProps);
     return (
       <li key={task.id}>
         <input type="checkbox" checked={task.completed} onChange={() => handleChangeProps(task.id)} />

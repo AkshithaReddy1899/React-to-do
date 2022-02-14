@@ -10,7 +10,6 @@ class TodosList extends Component {
 
   render() {
     const { todos, handleChangeProps, delTodoProps } = this.props;
-    console.log(delTodoProps);
     return (
       todos.map((task) => (
         <TodoItem
