@@ -1,13 +1,14 @@
 import './App.css';
+import Header from './components/Header';
+import Input from './components/Input';
+import TodoContainer from './components/TodoContainer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Hello world!
-        </p>
-      </header>
+      <Header />
+      <Input />
+      <TodoContainer />
     </div>
   );
 }
