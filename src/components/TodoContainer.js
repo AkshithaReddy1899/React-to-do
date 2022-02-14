@@ -1,6 +1,7 @@
 // Header, InputTodo, TodosList, NAvbar
 
 import React from 'react';
+import Header from './Header';
 import TodosList from './TodosList';
 
 class TodoContainer extends React.Component {
@@ -28,12 +29,37 @@ class TodoContainer extends React.Component {
     };
   }
 
+  handleChange = (id) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+        return todo;
+      }),
+    }));
+  };
+
+  delTodo = (id) => {
+    this.setState((prev) => ({
+      todos: prev.todos.filter((todo) => todo.id !== id),
+    }));
+  }
+
   render() {
     const { todos } = this.state;
 
     return (
       <div>
-        <TodosList todos={todos} />
+        <Header />
+        <TodosList
+          todos={todos}
+          handleChangeProps={this.handleChange}
+          delTodoProps={this.delTodo}
+        />
       </div>
     );
   }

@@ -8,10 +8,14 @@ class TodoItem extends Component {
   }
 
   render() {
-    const { task } = this.props;
+    const { task, handleChangeProps, delTodoProps } = this.props;
+    console.log('OM');
+    console.log(delTodoProps);
     return (
       <li key={task.id}>
+        <input type="checkbox" checked={task.completed} onChange={() => handleChangeProps(task.id)} />
         {task.title}
+        <button type="button" onClick={() => delTodoProps(task.id)}>Delete</button>
       </li>
     );
   }
@@ -23,6 +27,8 @@ TodoItem.defaultProps = {
 
 TodoItem.propTypes = {
   task: PropTypes.objectOf(PropTypes.any),
+  handleChangeProps: PropTypes.func.isRequired,
+  delTodoProps: PropTypes.func.isRequired,
 };
 
 export default TodoItem;

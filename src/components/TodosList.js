@@ -9,11 +9,16 @@ class TodosList extends Component {
   }
 
   render() {
-    const { todos } = this.props;
-    console.log(todos);
+    const { todos, handleChangeProps, delTodoProps } = this.props;
+    console.log(delTodoProps);
     return (
       todos.map((task) => (
-        <TodoItem key={task.id} task={task} />
+        <TodoItem
+          key={task.id}
+          task={task}
+          handleChangeProps={handleChangeProps}
+          delTodoProps={delTodoProps}
+        />
       ))
     );
   }
@@ -21,6 +26,8 @@ class TodosList extends Component {
 
 TodosList.propTypes = {
   todos: propTypes.instanceOf(Array).isRequired,
+  handleChangeProps: propTypes.func.isRequired,
+  delTodoProps: propTypes.func.isRequired,
 };
 
 export default TodosList;
