@@ -19,7 +19,14 @@ class InputTodo extends Component {
     const { addTodoProps } = this.props;
     const { title } = this.state;
     e.preventDefault();
-    addTodoProps(title);
+    if (title.trim()) {
+      addTodoProps(title);
+      this.setState({
+        title: '',
+      });
+    } else {
+      alert('Cannot add an empty task');
+    }
   }
 
   render() {
