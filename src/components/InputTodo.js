@@ -32,14 +32,17 @@ class InputTodo extends Component {
   render() {
     const { title } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add Task..."
-          value={title}
-          onChange={this.onChange}
-        />
-        <button type="submit" onClick={(e) => this.handleSubmit(e)}>Add</button>
+      <form onSubmit={this.handleSubmit} className="form-container">
+        <div className="ui input">
+          <input
+            className="input-text"
+            type="text"
+            placeholder="Add Task..."
+            value={title}
+            onChange={this.onChange}
+          />
+        </div>
+        <button type="submit" className="input-submit" onClick={(e) => this.handleSubmit(e)}>Add</button>
       </form>
     );
   }
