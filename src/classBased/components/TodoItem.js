@@ -50,6 +50,7 @@ class TodoItem extends Component {
           <div className="task-container">
             <input
               type="checkbox"
+              className={styles.checkebox}
               checked={task.completed}
               onChange={() => handleChangeProps(id)}
             />

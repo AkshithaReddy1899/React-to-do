@@ -1,23 +1,82 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styles from './TodoItem.module.css';
 
-const Todoitem = (props) => {
-  const { task } = props;
+const TodoItem = (props) => {
+  const [editing, setEditing] = useState(false);
+
+  const handleEditing = () => {
+    setEditing(true);
+  };
+
+  const handleUpdatedDone = (event) => {
+    if (event.key === 'Enter') {
+      setEditing(false);
+    }
+  };
+
+  const completedStyle = {
+    fontStyle: 'italic',
+    color: '#595959',
+    opacity: 0.4,
+    textDecoration: 'line-through',
+  };
+
+  const {
+    task, handleChangeProps, delTodoProps, setUpdate,
+  } = props;
+  console.log(task);
+  const { completed, id, title } = task;
+  console.log(title);
+  const viewMode = {};
+  const editMode = {};
+
+  if (editing) {
+    viewMode.display = 'none';
+  } else {
+    editMode.display = 'none';
+  }
+
   return (
-    <div>
-      <li key={task.id}>
-        {task.title}
-      </li>
-    </div>
+    <li className={styles.item}>
+      <div onDoubleClick={handleEditing} style={viewMode}>
+        <input
+          type="checkbox"
+          className={styles.checkbox}
+          checked={completed}
+          onChange={() => handleChangeProps(id)}
+        />
+        <button
+          type="button"
+          onClick={() => delTodoProps(id)}
+        >
+          Del
+        </button>
+        <span style={completed ? completedStyle : null}>{title}</span>
+      </div>
+      <input
+        type="text"
+        style={editMode}
+        className={styles.textInput}
+        value={title}
+        onChange={(e) => {
+          setUpdate(e.target.value, id);
+        }}
+        onKeyDown={handleUpdatedDone}
+      />
+    </li>
   );
 };
 
-Todoitem.defaultProps = {
-  task: [],
-};
-
-Todoitem.propTypes = {
+TodoItem.propTypes = {
   task: PropTypes.objectOf(PropTypes.any),
+  handleChangeProps: PropTypes.func.isRequired,
+  delTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
 };
 
-export default Todoitem;
+TodoItem.defaultProps = {
+  task: {},
+};
+
+export default TodoItem;

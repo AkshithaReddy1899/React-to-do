@@ -1,13 +1,38 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import Todoitem from './Todoitem';
 
-const TodoList = (props) => {
-  const { todos } = props;
+const TodosList = (props) => {
+  const {
+    todos, handleChangeProps, delTodoProps, setUpdate,
+  } = props;
+
+  console.log(todos);
 
   return (
-    todos.map((task) => (
-      <Todoitem key={task.id} task={task} />
-    ))
+    <ul>
+      {todos.map((task) => (
+        <Todoitem
+          key={task.id}
+          task={task}
+          handleChangeProps={handleChangeProps}
+          delTodoProps={delTodoProps}
+          setUpdate={setUpdate}
+        />
+      ))}
+    </ul>
   );
 };
 
-export default TodoList;
+TodosList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.any),
+  handleChangeProps: PropTypes.func.isRequired,
+  delTodoProps: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
+
+TodosList.defaultProps = {
+  todos: [],
+};
+
+export default TodosList;
