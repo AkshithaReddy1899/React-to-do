@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaPlusCircle } from 'react-icons/fa';
+import '../App.css';
 
 const InputTodo = (props) => {
   const [inputText, setInputText] = useState({

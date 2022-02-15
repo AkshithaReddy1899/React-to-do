@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Header from './Header';
 import TodoList from './TodoList';
 import InputTodo from './InputTodo';
+import Navbar from './Navbar';
 
 const TodoContainer = () => {
   function getInitialTodos() {
@@ -56,18 +57,21 @@ const TodoContainer = () => {
   };
 
   return (
-    <div className="container">
-      <div className="inner">
-        <Header />
-        <InputTodo addTodoProps={addTodoItem} />
-        <TodoList
-          todos={todos}
-          handleChangeProps={handleChange}
-          delTodoProps={delTodo}
-          setUpdate={setUpdate}
-        />
+    <>
+      <Navbar />
+      <div className="container">
+        <div className="inner">
+          <Header />
+          <InputTodo addTodoProps={addTodoItem} />
+          <TodoList
+            todos={todos}
+            handleChangeProps={handleChange}
+            delTodoProps={delTodo}
+            setUpdate={setUpdate}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
