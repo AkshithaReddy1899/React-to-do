@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import './App.css';
+import '../App.css';
 import TodoContainer from './TodoContainer';
 
 class App extends PureComponent {
