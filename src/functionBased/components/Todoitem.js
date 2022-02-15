@@ -26,9 +26,7 @@ const TodoItem = (props) => {
   const {
     task, handleChangeProps, delTodoProps, setUpdate,
   } = props;
-  console.log(task);
   const { completed, id, title } = task;
-  console.log(title);
   const viewMode = {};
   const editMode = {};
 
