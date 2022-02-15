@@ -6,9 +6,6 @@ const TodosList = (props) => {
   const {
     todos, handleChangeProps, delTodoProps, setUpdate,
   } = props;
-
-  console.log(todos);
-
   return (
     <ul>
       {todos.map((task) => (
